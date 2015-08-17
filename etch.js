@@ -58,8 +58,18 @@ $("#clear").click(function(){
 	});
 
 $("#shades").click(function(){
-		clearGrid();
-		
+	clearGrid();
+	createGrid();
+
+	$(".square").mouseenter(function(){
+
+		var currentOpacity = $(this).css("opacity");
+
+		if (currentOpacity > 0){
+			$(this).css("opacity", currentOpacity - 0.1);
+		}
+	});
+
 		
 
 	});
