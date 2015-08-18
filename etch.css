@@ -10,6 +10,7 @@
 	width: 800px;
 	height: 400px;
 	border: 50px ridge red;
+	border-radius: 5%;
 	background-color: #edefef;
 	margin: 0 auto;
 	overflow: hidden;
@@ -20,7 +21,6 @@
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	/*outline: black dotted 1px;*/
 	float: left;
 	margin: 0;
 }
