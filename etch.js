@@ -3,7 +3,7 @@ $(document).ready(function(){
 		
 		//Do / While loop gets grid size from user with data error checking
 		do {
-				var boxesPerRow = prompt("Enter a number between 1-64");
+				var boxesPerRow = prompt("Enter a number between 1-64", 64);
 			}
 			while (boxesPerRow < 1 || boxesPerRow > 64 || isNaN(boxesPerRow));
 	
@@ -11,7 +11,7 @@ $(document).ready(function(){
 	//Declare variables and functions
 
 	var containerWidth = 800; //sets the width of the 'screen' should match the css setting
-	var boxHeightWidth = Math.round(containerWidth / boxesPerRow); //divides the container by the amount of boxes chosen to create the squares' height and width values
+	var boxHeightWidth = containerWidth / boxesPerRow; //divides the container by the amount of boxes chosen to create the squares' height and width values
 	
 	var classic = function(){
 		$(".square").mouseenter(function(){
@@ -49,6 +49,17 @@ $(document).ready(function(){
 			classic();
 		};
 
+	/*var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	var letters = alphabet.split("");
+
+	var alpha = function(){
+		$(".square").mouseenter(function(){
+			for (i = 0; i < 26; i++){
+    			$(this).append(letters[i]);
+			}
+		});
+	};
+	*/
 			createGrid();
 
 //Set up button functionality
@@ -73,8 +84,8 @@ $("#shades").click(function(){
 	clearGrid();
 	createGrid();
 	opacityDiv();
+	$('#container').css({"background-color" : "white"});
 
-	});
-		
+	});	
 });
 
