@@ -5,7 +5,7 @@ $(document).ready(function(){
 		do {
 				var boxesPerRow = prompt("Enter a number between 1-64", 64);
 			}
-			while (boxesPerRow < 1 || boxesPerRow > 64 || isNaN(boxesPerRow));
+			while (boxesPerRow < 1 || boxesPerRow > 100 || isNaN(boxesPerRow));
 	
 
 	//Declare variables and functions
@@ -27,26 +27,35 @@ $(document).ready(function(){
 			if (currentOpacity > 0){
 				$(this).css("opacity", currentOpacity - 0.1);
 			}
+			if (currentOpacity == 0){
+				$(this).css("opacity", currentOpacity = 1);
+			}
 		});
 	};
 
 	var randomColorDiv = function() {
     		$(".square").mouseenter(function(){
-			$(this).css({"border-radius" : "50px" , "background-color" : "#" + Math.floor(Math.random() * 16777215).toString(16)}); //http://www.paulirish.com/2009/random-hex-color-code-snippets/
+			$(this).css({"background-color" : "#" + Math.floor(Math.random() * 16777215).toString(16)}); //http://www.paulirish.com/2009/random-hex-color-code-snippets/
 		});
 	};
 
 	var clearGrid = function(){
-		$("#container > .square").remove();
+		console.time("remove clear grid");
+		//$("#container > .square").remove(); This code was creating a lag on redrawing the grid replaced it. Improved response
+		// from 147ms and up to 47-78ms
+		$("#container").empty();
+		console.timeEnd("remove clear grid");
 		boxesPerRow;
 	}
 
 	var createGrid = function(){
+		console.time("create grid time");
 		for (var i = 1; i <= Math.pow(boxesPerRow, 2); i++){
 			$("#container").append("<div class='square'></div>"); //squares the boxes per row value then adds that amount of divs to the container
 	}
 			$(".square").height(boxHeightWidth).width(boxHeightWidth);
 			classic();
+		console.timeEnd("create grid");
 		};
 
 	/*var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -68,6 +77,8 @@ $("#colors").click(function(){
 		clearGrid();
 		createGrid();
 		randomColorDiv();
+		//alpha();
+		
 
 	});
 
@@ -77,7 +88,9 @@ $("#classic").click(function(){
 });
 
 $("#clear").click(function(){
+	console.time("reset time");
 	document.location.reload();
+	console.timeEnd("reset time");
 	});
 
 $("#shades").click(function(){
