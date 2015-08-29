@@ -23,11 +23,11 @@ Resources used:
 
 [Google](https://www.google.com)
 
-[Stack Overflow](stackoverflow.com)
+[Stack Overflow](http://stackoverflow.com/)
 
 [Paul Irish blog post](http://www.paulirish.com/2009/random-hex-color-code-snippets/)
 
-[CSS Tricks](css-tricks.com)
+[CSS Tricks](https://css-tricks.com/)
 
 [jQuery Documentation](https://api.jquery.com/)
 
